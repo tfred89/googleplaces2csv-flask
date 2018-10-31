@@ -33,7 +33,7 @@ def address():
         to_dwnld = csv.writer(to_csv)
         to_dwnld.writerows(output)
         out = make_response(to_csv.getvalue())
-        out.headers["Content-Disposition"] = "attachment; filename=export.csv"
+        out.headers["Content-Disposition"] = "attachment; filename=EW-LocatorList.csv"
         out.headers["Content-type"] = "text/csv"
         return out
 
