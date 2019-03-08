@@ -1,20 +1,14 @@
-''' Goal is to have a bot that can search for all businesses of as
-specific type (eg restaurant, cafe, bar) within a radius of ___ miles
-from an input address. Want to return business name, type, address,
-phone #, email, review rating, etc.'''
 
 from flask import Flask, render_template, jsonify, request, make_response
-import requests
-import io
-import csv
+import requests, io, csv, environ, os
 
-key = 'AIzaSyD5CCUlbq7cUYc3fOTBb6NNCPr2Lr_18NE'
+
+key = os.environ['api_key']
 app = Flask(__name__)
 
-# search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
-# base gooogle places 'nearby search' URL https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
+
 search_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-#will need to find details of the places returned by the search_url request
+
 details_url = "https://maps.googleapis.com/maps/api/place/details/json"
 geocode_url = "https://maps.googleapis.com/maps/api/geocode/json"
 
